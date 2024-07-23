@@ -1,19 +1,13 @@
 'use client';
-import { useCallback, useRef, useEffect, MouseEventHandler } from 'react';
 import { useRouter } from 'next/navigation';
+import { MouseEventHandler, useCallback, useEffect, useRef } from 'react';
 
 type ModalProps = {
   children: React.ReactNode;
-  type: string;
-  title: string;
-  description: string;
 };
 
 export default function Modal({
   children,
-  type,
-  title,
-  description,
 }: ModalProps) {
   const overlay = useRef(null);
   const wrapper = useRef(null);

@@ -1,8 +1,9 @@
-import SearchInput from '@/components/SearchInput';
-import './globals.css';
+import Header from '@/components/header';
+import Navtabs from '@/components/navtabs';
+import SearchInput from '@/components/searchbar';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Navtabs from '@/components/Navtabs';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -11,29 +12,28 @@ export const metadata: Metadata = {
   description: 'take home for sennior UI developer',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  modal: React.ReactNode;
+type Props = {
+  modal?: React.ReactNode;
   children: React.ReactNode;
-}) {
+}
+
+export default function RootLayout({
+  modal,
+  children,
+}: Props) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-main-white`}>
-        <main className="container max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl py-6 flex flex-col gap-8">
+      <body className={`${inter.className} bg-main-white min-h-screen bg-gray-50 py-10`}>
+        <main className="container mx-auto xl:px-60 px-10">
           {/* Top header */}
-          <div className="flex flex-col items-center gap-4">
-            <h1 className="text-3xl font-bold">Library</h1>
-            <span>
-              Browser for assets needed to report and present analysis
-            </span>
-          </div>
+          <Header/>
           {/* Search */}
           <SearchInput />
           {/* TABS */}
           <Navtabs />
           {children}
         </main>
+        {modal}
       </body>
     </html>
   );

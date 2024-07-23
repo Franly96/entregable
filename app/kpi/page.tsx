@@ -1,4 +1,7 @@
-import Item from '@/components/Item';
+import Card from '@/components/card';
+import DataSection from '@/components/DataSection';
+import Section from '@/components/section';
+import MainLayout from '@/layouts/MainLayout';
 
 async function getData() {
   const res = await fetch('http://localhost:3000/api/kpi');
@@ -9,33 +12,25 @@ async function getData() {
   return res.json();
 }
 
-export default async function Home() {
-  const data = await getData();
+export default async function KPI() {
+  const { data } = await getData();
 
   const itemsMap =
     data &&
-    data.items.map((item: any) => (
-      <Item
-        type="kpi"
-        key={item.question}
-        title={item.question}
+    data.map((item: any) => (
+      <Card
+        url={`/kpi/${item.id}`}
+        key={item.id}
+        title={item.title}
         description={item.description}
-        date={item.updated}
-        id={item.id}
+        imageUrl={item.imageUrl}
+        footNote={item.updated}
       />
     ));
   return (
-    <div className="container max-w-sm sm:max-w-md md:max-w-lg  lg:max-w-xl xl:max-w-2xl py-6 flex flex-col gap-8">
-      <div className="flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Featured</h1>
-        <span>Curated top picks from this week</span>
-        <div className="flex flex-wrap gap-2">{itemsMap}</div>
-      </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Trending</h1>
-        <span>Most Popular by community</span>
-        <div className="flex flex-wrap gap-2">{itemsMap}</div>
-      </div>
-    </div>
+    <MainLayout>
+      <Section title='Featured' description='Curated top picks from this week'>{itemsMap}</Section>
+      <DataSection title='Featured' description='Data - Curated top picks from this week' />
+    </MainLayout>
   );
 }

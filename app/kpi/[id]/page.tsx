@@ -1,23 +1,17 @@
-import Modal from '@/components/Modal';
+import DetailPage from '@/components/detail-page';
+import MainLayout from '@/layouts/MainLayout';
+import React from 'react';
 
-async function getData(id: string) {
-  const res = await fetch('http://localhost:3000/api/kpi' + id);
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
+type Props = {
+  id: string
 }
 
 export default async function KpiPage({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
-  const data = await getData(id);
+  id,
+}: Props) {
   return (
-    <Modal type="kpi" title={data.title} description={data.description}>
-      <div className="container bg-white p-4"></div>
-    </Modal>
+    <MainLayout>
+      <DetailPage/>
+    </MainLayout>
   );
 }

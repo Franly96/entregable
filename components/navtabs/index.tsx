@@ -27,8 +27,10 @@ export default function Navtabs(props: any) {
   });
 
   return (
-    <ul className="flex flex-row justify-around bg-catskill-white border p-1 text-sm text-black-900 border border-gray-300 rounded-lg">
-      {navLinks}
-    </ul>
+    <nav>
+      <ul className="flex flex-row justify-around bg-catskill-white border p-1 text-sm text-black-900 border border-gray-300 rounded-lg">
+        {navLinks}
+      </ul>
+    </nav>
   );
 }

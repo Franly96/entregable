@@ -1,6 +1,6 @@
-import { items } from '../data';
 import { NextResponse } from 'next/server';
+import { items } from '../../../utils/data';
 
 export async function GET() {
-  return NextResponse.json({ items });
+  return NextResponse.json({ data: items });
 }
