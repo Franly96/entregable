@@ -40,16 +40,15 @@ export default function Modal({
 
   return (
     <div
-      ref={overlay}
-      className="justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full fixed z-10 left-0 right-0 top-0 bottom-0 mx-auto bg-black/60 p-10"
+      id="modal-overlay"
       onClick={onClick}
+      className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center overflow-y-auto items-center mt-200 pt-[600px] md:pt-[500px] lg:pt-[450px] xl:pt-[250px]"
     >
       <div
-        ref={wrapper}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:w-10/12 md:w-8/12 lg:w-2/5 p-6"
-      >
-        <div className="container bg-white p-4">{children}</div>
-      </div>
+        className="bg-white rounded-lg shadow-lg overflow-hidden w-11/12 md:w-3/4 lg:w-2/4 rounded-lg mt-32"
+        onClick={(e) => e.stopPropagation()}
+      > 
+        {children}</div>
     </div>
   );
 }

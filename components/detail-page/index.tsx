@@ -15,7 +15,7 @@ const DetailPage = () => {
   }, []);
   return (
     <>
-      <div className="container max-w-sm sm:max-w-md md:max-w-lg  lg:max-w-xl xl:max-w-2xl py-6 flex flex-col gap-8">
+      <div className="container max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl py-6 flex flex-col gap-8">
         <div className="flex justify-end items-center px-4 pt-4">
         </div>
         <div className="p-4">

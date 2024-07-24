@@ -30,7 +30,6 @@ export default async function KPI() {
   return (
     <MainLayout>
       <Section title='Featured' description='Curated top picks from this week'>{itemsMap}</Section>
-      <DataSection title='Featured' description='Data - Curated top picks from this week' />
     </MainLayout>
   );
 }

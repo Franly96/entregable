@@ -1,5 +1,4 @@
 import Card from '@/components/card';
-import DataSection from '@/components/DataSection';
 import Section from '@/components/section';
 import MainLayout from '@/layouts/MainLayout';
 
@@ -17,10 +16,10 @@ export default async function Home() {
 
   const itemsMap =
     data &&
-    data.map((item: any) => (
+    data.map((item: any, index: number) => (
       <Card
         url={`/kpi/${item.id}`}
-        key={item.id}
+        key={item.id + index}
         title={item.title}
         description={item.description}
         imageUrl={item.imageUrl}
@@ -30,7 +29,7 @@ export default async function Home() {
   return (
     <MainLayout>
       <Section title='Featured' description='Curated top picks from this week'>{itemsMap}</Section>
-      <DataSection title='Featured' description='Data - Curated top picks from this week' />
+      <Section title='Trending' description='Most popular by community'>{itemsMap}</Section>
     </MainLayout>
   );
 }

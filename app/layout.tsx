@@ -32,8 +32,8 @@ export default function RootLayout({
           {/* TABS */}
           <Navtabs />
           {children}
+          {modal}
         </main>
-        {modal}
       </body>
     </html>
   );
